@@ -50,3 +50,7 @@ Terminado el tutorial, describir la función de algunos de los metacaracteres qu
 | 0{4} | Matchea con 4 ceros seguidos |
 
 ### Paso 3: Verificar sus respuestas.
+En este paso se verificaran las respuestas del paso anterior con un archivo de texto almacenado en la VM CyberOps Workstation.
+![83](./imgs/tp2_img2.jpg)
+![time](./imgs/tp2_img3.jpg)
+![complete or GET](./imgs/tp2_img4.jpg)

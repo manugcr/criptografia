@@ -1,9 +1,10 @@
-# Registro de eventos
+# Criptografia y Seguridad en Redes
 
-Trabajo Practico 1 - Criptografia y Seguridad en Redes
+## Trabajo Practico 1 - Laboratorio de registro de eventos
 
-Gil Cernich, Manuel
-Mayorga, Federica
+### Integrantes:
+- Gil Cernich, Manuel
+- Mayorga, Federica
 
 ---
 

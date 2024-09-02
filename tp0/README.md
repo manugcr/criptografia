@@ -12,6 +12,8 @@
 En esta práctica de laboratorio se familiarizará con el protocolo ssh y el uso de claves públicas 
 y privadas para el control de acceso. Opcionalmente podrán ampliar la práctica con libpam y con fail2ban.
 
+## Control de acceso en SSH
+
 ### Generación de una nueva clave para SSH y adición al agente SSH
 1. Abra Terminal.
    
@@ -40,3 +42,29 @@ etiqueta.
     - RSA sigue vigente, pero se recomienda considerar alternativas más modernas como ECDSA o EdDSA.
 
 ### Subir la clave pública ssh al servidor de entrada y al segundo servidor
+
+No se puede avanzar mas (por el momento).
+---
+
+## Doble Factor de Autenticacion
+
+### Paso 1: instalar PAM de Google
+PAM es Pluggable Authentication Modules, es una infraestructura de
+autenticación utilizada en sistemas Linux para autenticar a un usuario.
+
+<p align="center">
+    <img src="imgs/tp0B_img1.JPG"><br>
+    <em>Fig 1. Generacion de clave SSH</em>
+</p>
+
+Con el PAM instalado, usaremos una aplicación auxiliar que viene con el PAM para generar una clave TOTP para el usuario que necesita un segundo factor.
+
+<p align="center">
+    <img src="imgs/tp0B_img2.JPG"><br>
+    <em>Fig 1. Generacion de clave SSH</em>
+</p>
+
+Una vez finalizadas las preguntas de configuracion de google authenticator, hacemos el siguiente paso.
+
+### Paso 2: Configurar OpenSSH para usar MFA/2FA
+A partir de ahora, no puedo usar el cmd sudo.

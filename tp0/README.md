@@ -33,7 +33,7 @@ etiqueta.
 5. Verifique que la clave se creó haciendo cat al archivo de la clave publica.
    
 <p align="center">
-    <img src="imgs/tp0_img1.JPG"><br>
+    <img src="imgs/tp0A_img1.jpg"><br>
     <em>Fig 1. Generacion de clave SSH</em>
 </p>
 
@@ -53,14 +53,14 @@ PAM es Pluggable Authentication Modules, es una infraestructura de
 autenticación utilizada en sistemas Linux para autenticar a un usuario.
 
 <p align="center">
-    <img src="imgs/tp0B_img1.JPG"><br>
+    <img src="imgs/tp0B_img1.jpg"><br>
     <em>Fig 1. Generacion de clave SSH</em>
 </p>
 
 Con el PAM instalado, usaremos una aplicación auxiliar que viene con el PAM para generar una clave TOTP para el usuario que necesita un segundo factor.
 
 <p align="center">
-    <img src="imgs/tp0B_img2.JPG"><br>
+    <img src="imgs/tp0B_img2.jpg"><br>
     <em>Fig 1. Generacion de clave SSH</em>
 </p>
 

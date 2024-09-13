@@ -132,7 +132,9 @@ Como no todo tiene que ser monotono, mostramos nuestro banner de inicio de sesio
     <em>Fig 11. Acceder por ssh</em>
 </p>
 
+## Autorización usando PAM
 
+Hasta aca llega este TP ya que la parte de PAM esta rota por la actualizacion del mirror de la VM en la que se trabaja.
 
 ---
 
@@ -157,4 +159,4 @@ Con el PAM instalado, usaremos una aplicación auxiliar que viene con el PAM par
 Una vez finalizadas las preguntas de configuracion de google authenticator, hacemos el siguiente paso.
 
 ### Paso 2: Configurar OpenSSH para usar MFA/2FA
-A partir de ahora, no puedo usar el cmd sudo.
+Hasta aca llega este TP ya que la parte de PAM esta rota por la actualizacion del mirror de la VM en la que se trabaja.

@@ -42,3 +42,16 @@ Una vez terminado podemos ver el reporte en el mismo dashboard, para este caso s
     <img src="imgs/ssl-vuln.png"><br>
     <em>Fig 3. Certificado SSL vencido.</em>
 </p>
+
+---
+
+## Conclusiones
+
+A pesar de que para nuestro caso solamente se detecto un certificado SSL vencido, OpenVAS es una herramienta muy util para detectar vulnerabilidades en sistemas y redes. Es muy facil de usar y tiene una interfaz web muy amigable. Ademas, nos da soluciones para resolver las vulnerabilidades detectadas.
+
+Se puede ver como en el dashboard principal tienen un listado de las posibles vulnerabilidades que se pueden encontrar en un sistema, y se pueden filtrar por severidad, tipo de vulnerabilidad, etc. Teniendo la informacion de cada una y si es que tienen relacionado un CVE en particular.
+
+<p align="center">
+    <img src="imgs/vulns.png"><br>
+    <em>Fig 4. Listado de vulnerabilidades de alta prioridad.</em>
+</p>

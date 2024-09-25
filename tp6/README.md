@@ -4,6 +4,7 @@
 
 ### Integrantes:
 
+- Cabrera, Augusto
 - Gil Cernich, Manuel
 - Mayorga, Federica
 

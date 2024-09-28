@@ -22,6 +22,43 @@ LAMP es un acrónimo que se refiere a un conjunto de software utilizado comúnme
 
 Un servidor LAMP es una solución de software de código abierto que se usa ampliamente para crear sitios web dinámicos y aplicaciones basadas en la web. Es conocido por su flexibilidad, escalabilidad y facilidad de implementación.
 
+
+### Wordpress
+
+
+
+**WordPress** es un sistema de gestión de contenidos (**CMS**) que permite crear y administrar sitios web de manera fácil, sin necesidad de conocimientos técnicos.
+
+Desde su lanzamiento en **2003**, se ha convertido en la plataforma más popular para la creación de sitios en línea. Gracias a su sistema sencillo e intuitivo, puedes crear desde un blog personal hasta la web más compleja.
+
+Si tú también quieres o tienes un sitio en WordPress, ¡dale el mejor alojamiento con un hosting especializado! 😉
+
+### ¿Qué es el plugin WooCommerce?
+
+**WooCommerce** es un plugin de WordPress que permite la creación de tiendas virtuales de código abierto.
+
+Es muy común que las empresas que ya tienen sitios en WordPress elijan WooCommerce para administrar su **ecommerce**.
+
+La idea fue desarrollada originalmente por los programadores **Mike Jolley** y **James Koster** en **2011**. Cuatro años después, fue adquirida por WordPress y, actualmente, posee el **26%** de todas las tiendas virtuales en el mundo.
+
+Después de todo, WooCommerce te permite vender cualquier tipo de producto o servicio, desde artículos duraderos hasta infoproductos y suscripciones de contenido.
+
+#### Métodos de pago
+
+WooCommerce tiene integraciones con las más variadas formas de pago, tales como:
+
+- Tarjeta de crédito
+- Tarjeta de débito
+- Transferencia electrónica
+- PagoSeguro
+- Mercado Pago
+- PayPal
+- Entre otros
+
+Por lo tanto, una vez que el cliente quiera comprar tu oferta, elegir su método de pago preferido no será un problema.
+
+
+
 --- 
 
 
@@ -276,14 +313,121 @@ Estos ajustes predeterminados ofrecen una buena protección básica, pero puedes
   </a>
   </p>
 
-<!-- DESDE ACA FALTA -->
+<p align="center">
+  <a href="https://example.com/">
+    <img src="img/image13.png" alt="bloques">
+  </a>
+  </p>
+
+
+<p align="center">
+  <a href="https://example.com/">
+    <img src="img/image14.png" alt="bloques">
+  </a>
+  </p>
+
+
 
 ### Exponer la instalación a internet y compartir la URL
-- Abrir el puerto necesario.
-- Instalar un cliente de DNS dinámico.
-- Asignar una IP LAN fija a la máquina.
-- Generar un dominio.
 
-### Realizar un análisis de seguridad inicial de la instalación
+#### 1 - Abrir el puerto necesario.
+
+Para que la instalación de WordPress sea accesible desde internet, debes asegurarte de que los puertos necesarios estén abiertos.
+
+```bash
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw reload
+
+```
+
+En tu router:
+Accede a la interfaz de administración de tu router (normalmente a través de http://192.168.1.1 o http://192.168.0.1).
+Busca la sección de "Port Forwarding" o "NAT" y redirige el tráfico del puerto 80 y 443 a la dirección IP local de tu máquina Ubuntu.
+
+<p align="center">
+  <a href="https://example.com/">
+    <img src="img/image15.png" alt="bloques">
+  </a>
+  </p>
+
+
+
+#### 2 - Instalar un cliente de DNS dinámico.
+
+Algunos ejemplos son No-IP, Dynu, o DuckDNS
+
+
+<p align="center">
+  <a href="https://example.com/">
+    <img src="img/image18.png" alt="bloques">
+  </a>
+  </p>
+
+<p align="center">
+  <a href="https://example.com/">
+    <img src="img/image19.png" alt="bloques">
+  </a>
+  </p>
+
+
+Al obtener y configurar el certificado SSL para tu dominio, lograste lo siguiente:
+
+1. **Conexión Segura**: 
+   - EL sitio web ahora está protegido con HTTPS, cifrando la información entre el servidor y el navegador del usuario. Esto ayuda a prevenir ataques como el "hombre en el medio" (MITM) y garantiza que los datos sensibles se transmitan de forma segura.
+
+2. **Confianza del Usuario**: 
+   - Los usuarios verán un candado en la barra de direcciones, lo que les da confianza al saber que su conexión es segura. Esto es especialmente importante si tu sitio maneja información confidencial.
+
+3. **Mejora del SEO**: 
+   - Los motores de búsqueda, como Google, favorecen los sitios que utilizan HTTPS, lo que puede mejorar la clasificación de tu sitio en los resultados de búsqueda.
+
+4. **Cumplimiento de Normativas**: 
+   - Si tu sitio recopila información personal, usar HTTPS puede ser un requisito para cumplir con normativas de protección de datos, como el GDPR en Europa.
+
+5. **Renovación Automática**: 
+   - Certbot ha configurado una tarea programada para renovar automáticamente tu certificado, reduciendo la carga de mantenimiento y evitando interrupciones en el servicio debido a un certificado caducado.
+
+6. **Facilidad de Configuración**: 
+   - Usar Certbot para configurar el certificado SSL simplifica el proceso, ya que maneja la mayoría de las configuraciones necesarias de forma automática.
+
+
+
+
+
+#### 3 - Asignar una IP LAN fija a la máquina.
+
+Es importante que el servidor tenga una dirección IP local estática para que las reglas de reenvío de puertos funcionen correctamente.
+
+
+
+
+
+
+#### 4 - Generar un dominio.
+
+El dominio `https://tpcriptomaf.zapto.org/`, que incorpora las iniciales de los integrantes del grupo (M.A.F), ha sido exitosamente implementado con un certificado SSL que garantiza la seguridad en las comunicaciones. Este proceso no solo permite el acceso seguro a nuestro sitio web, sino que también refleja la importancia de las configuraciones adecuadas de red y de servidor para lograr una presencia en línea efectiva y confiable.
+
+
+<p align="center">
+  <a href="https://example.com/">
+    <img src="img/image20.png" alt="bloques">
+  </a>
+  </p>
+
+
+La creación del dominio  ha sido posible gracias a la utilización del servicio de DNS dinámico proporcionado por No-IP. Este proceso se ha llevado a cabo en varios pasos clave:
+
+1. **Registro del Dominio**: Se ha registrado el dominio en No-IP, asignando la dirección IP pública de nuestro servidor, lo que permite que el dominio apunte correctamente a nuestra máquina.
+
+2. **Configuración del Router**: Se realizó la configuración del reenvío de puertos en el router, asegurando que las solicitudes entrantes en los puertos 80 (HTTP) y 443 (HTTPS) se dirijan a la dirección IP local de nuestro servidor (192.168.0.9).
+
+3. **Instalación de Certbot**: Se utilizó Certbot para obtener un certificado SSL gratuito de Let's Encrypt, permitiendo la habilitación de HTTPS en nuestro dominio.
+
+4. **Redirección de HTTP a HTTPS**: Se configuró Apache para redirigir automáticamente las solicitudes de HTTP a HTTPS, asegurando que todas las conexiones se realicen de manera segura.
+
+5. **Verificación de Certificado**: Se llevó a cabo una verificación simulada de renovación del certificado, confirmando que todo estaba configurado correctamente y que el certificado se renovaría automáticamente.
+
+
 
 

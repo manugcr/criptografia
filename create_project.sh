@@ -24,6 +24,7 @@ cat <<EOL > "$README_PATH"
 
 ### Integrantes:
 
+- Cabrera, Augusto Gabriel
 - Gil Cernich, Manuel
 - Mayorga, Federica
 

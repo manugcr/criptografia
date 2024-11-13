@@ -4,6 +4,8 @@
 ## Trabajo Practico 0B - Doble Factor de Autenticacion
 
 ### Integrantes:
+
+- Cabrera, Augusto
 - Gil Cernich, Manuel
 - Mayorga, Federica
 

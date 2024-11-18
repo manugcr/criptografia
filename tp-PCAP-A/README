@@ -1,0 +1,225 @@
+# Criptografia y Seguridad en Redes
+
+## Trabajo Practico  - Extraer un ejecutable de un PCAP
+
+### Integrantes:
+
+- Cabrera, Augusto Gabriel
+- Gil Cernich, Manuel
+- Mayorga, Federica
+
+
+---
+
+## Introduccion
+
+Analizar registros es muy importante, pero también lo es comprender de qué manera suceden las transacciones de red al nivel de los paquetes.
+
+En esta práctica de laboratorio analizarán el tráfico de un archivo PCAP previamente capturado y extraerán un ejecutable del archivo.
+
+
+---
+## Marco Teorico
+
+### ¿Qué es un archivo .pcap?
+
+La extensión de archivo `.pcap` está asociada principalmente con **Wireshark**, un programa utilizado para el análisis de redes. Los archivos `.pcap` son archivos de datos creados por este programa y contienen paquetes de datos capturados de una red. Su principal uso es analizar las características de una red en un momento determinado, lo que los hace esenciales para:
+
+- **Monitoreo del tráfico de red**: Permiten controlar el tráfico de una red específica al ser analizados con Wireshark.
+- **Diagnóstico de redes**: Ayudan a identificar problemas en la red.
+- **Estudio de comunicaciones**: Facilitan el análisis detallado de los datos transmitidos.
+
+Los archivos `.pcap` permiten a los analistas determinar el estado de la red y solucionar problemas potenciales. Estos archivos pueden ser abiertos en múltiples sistemas operativos como Windows, macOS y Linux utilizando aplicaciones compatibles. Algunas de las herramientas comunes para abrir archivos `.pcap` incluyen:
+
+- **Wireshark**
+- **WinDump**
+- **tcpdump**
+- **Packet Square - Capedit**
+- **Ethereal**
+
+---
+
+### ¿Cómo abrir un archivo .pcap?
+
+Para abrir un archivo `.pcap`, sigue estos pasos:
+
+1. **Doble clic**: Haz doble clic en el archivo. Si las asociaciones de archivos están configuradas correctamente, se abrirá con la aplicación adecuada.
+2. **Instalar la aplicación correcta**: Si no tienes una aplicación compatible, necesitarás descargar o comprar una.
+3. **Asociar el archivo manualmente**:
+   - Si tienes una aplicación compatible instalada pero no está asociada al archivo `.pcap`, haz clic derecho en el archivo.
+   - Selecciona **Abrir con** y elige la aplicación correcta.
+   - Marca la opción **Usar siempre esta aplicación para abrir archivos .pcap**.
+
+Una vez configurada la asociación, los archivos `.pcap` se abrirán automáticamente con la aplicación seleccionada.
+
+
+--- 
+
+## Parte 1: Analizar archivos de registros precapturados y capturas de tráfico
+
+
+### Análisis del archivo **nimda.download.pcap**
+
+El archivo `nimda.download.pcap` contiene paquetes relacionados con la descarga del malware **Nimda**. Este archivo es una captura de paquetes generada en una práctica de laboratorio anterior y puede encontrarse en las siguientes ubicaciones dentro de la máquina virtual **CyberOps Workstation**:
+
+- **Si ya lo creaste**: Estará en el directorio `/home/analyst`.
+- **Copia de respaldo**: Una versión del archivo está disponible en `/home/analyst/lab.support.files/pcaps`.
+
+Para garantizar resultados consistentes, se recomienda utilizar la versión almacenada en el directorio `pcaps` durante las prácticas de laboratorio.
+
+---
+
+### Herramientas de análisis
+
+Existen dos herramientas principales para analizar archivos PCAP:
+
+1. **tcpdump**:
+   - Es una herramienta de línea de comandos para capturar y analizar tráfico de red.
+   - Permite trabajar con archivos PCAP, pero puede ser más compleja para usuarios sin experiencia.
+
+2. **Wireshark**:
+   - Proporciona una interfaz gráfica que facilita la tarea de análisis.
+   - Es ideal para examinar el contenido del archivo y realizar diagnósticos más detallados.
+
+#### Compatibilidad entre herramientas
+Ambas herramientas comparten el mismo formato de archivo para capturas de paquetes (PCAP). Esto significa que:
+
+- Un archivo PCAP creado con **tcpdump** puede abrirse en **Wireshark**.
+- Un archivo PCAP capturado con **Wireshark** puede analizarse con **tcpdump**.
+
+
+## Recomendación
+Aunque puedes utilizar **tcpdump** para este análisis, se sugiere usar **Wireshark** debido a su interfaz gráfica intuitiva, que facilita la identificación de eventos relevantes en la captura de paquetes.
+
+<p align="center">
+    <img src="img/image1.png" alt="bloques">
+  </p>
+
+   el siguiente comando para abrir el archivo **nimda.download.pcap** en Wireshark
+
+<p align="center">
+    <img src="img/image2.png" alt="bloques">
+  </p>
+
+  El archivo nimda.download.pcap contiene la captura de paquetes relacionadas con la descarga de
+malware que se realizó en la práctica de laboratorio anterior. El pcap contiene todos los paquetes
+enviados y recibidos mientras se estaba ejecutando tcpdump. Seleccione el cuarto paquete de la captura y expanda el Protocolo de transferencia de hipertexto (HTTP) para que aparezca como se indica
+a continuación.
+
+<p align="center">
+    <img src="img/image3.png" alt="bloques">
+  </p>
+
+- **Paquetes del 1 al 3**: Representan el protocolo de enlace **TCP**.
+- **Paquete 4**: Contiene la *solicitud correspondiente al archivo de malware*. La solicitud se realizó a través de **HTTP**, utilizando un método **GET**.
+
+Dado que **HTTP** se ejecuta sobre **TCP**, es posible usar la función **Follow TCP Stream** de Wireshark para reconstruir la transacción TCP completa. 
+
+### Instrucciones para seguir el flujo TCP:
+1. Selecciona el **primer paquete TCP** de la captura (paquete SYN).
+2. Haz clic derecho en el paquete seleccionado.
+3. Ve a **Follow** > **TCP Stream**.
+
+
+
+<p align="center">
+    <img src="img/image4.png" alt="bloques">
+  </p>
+
+  Se abre otra ventana con los detalles correspondientes a todo el flujo de TCP
+seleccionado
+
+<p align="center">
+    <img src="img/image5.png" alt="bloques">
+  </p>
+
+**¿Qué son todos esos símbolos que se ven en la ventana de Follow TCP Stream? ¿Son interferencias de conexión? ¿Son datos? Explique.**
+
+Los símbolos que se observan en la ventana de **Follow TCP Stream** no son interferencias de conexión, sino que son **datos en formato binario** representados en su equivalente ASCII. Esto ocurre porque los datos capturados en el archivo `.pcap` incluyen tanto información legible como contenido binario, dependiendo del tipo de datos transmitidos.
+
+## Análisis de los datos
+
+1. **Encabezados legibles**:
+   - En la parte superior se encuentra la solicitud HTTP realizada por el cliente (GET), junto con los encabezados de la respuesta del servidor (HTTP/1.1 200 OK).
+   - Estos encabezados son datos en texto plano y, por lo tanto, son legibles directamente.
+
+2. **Datos binarios**:
+   - La sección con símbolos extraños corresponde al contenido del archivo que se estaba descargando (`W32.Nimda.Amm.exe`).
+   - Como un archivo ejecutable está compuesto principalmente por instrucciones en formato binario, este no es legible en texto plano. Wireshark lo interpreta como caracteres ASCII.
+
+
+**En resumen:** Estos símbolos son **datos binarios** interpretados como texto, no interferencias ni errores de conexión. Representan el contenido del archivo descargado a través de la red (en este caso, el malware **Nimda**). 
+
+Si se desea analizar este contenido, sería necesario extraerlo como un archivo binario y abrirlo con herramientas específicas.
+
+<div style="border: 1px solid #ccc; padding: 10px; background-color: #24B442; border-radius: 5px;">
+  Los símbolos son el contenido real del archivo descargado. Como se trata de un archivo binario, Wireshark no sabe cómo representarlo. Los símbolos que se muestran son la mejor aproximación de Wireshark para interpretar los datos binarios mientras los decodifica como texto.
+</div>
+
+**¿Se pueden distinguir algunas palabras dispersas entre los símbolos. ¿Por qué están allí?**
+
+Se trata de cadenas contenidas en el código ejecutable. Por lo general, estas palabras forman parte de los mensajes que el programa envía al usuario mientras se ejecuta. Si bien se trata más de un arte que de una ciencia, un analista experto puede extraer información valiosa leyendo estos fragmentos.
+
+
+
+--- 
+
+## Parte 2: Extraer archivos descargados desde archivos PCAP
+
+
+Como los archivos de capturas contienen paquetes relacionados con el tráfico, se puede utilizar un PCAP de una descarga para recuperar un archivo descargado anteriormente. Siga los pasos que se detallan a continuación para utilizar Wireshark y recuperar el malware **Nimda**.
+
+1. En el cuarto paquete del archivo `nimda.download.pcap`, observe que la solicitud HTTP GET se generó desde `209.165.200.235` hacia `209.165.202.133`. En la columna **Info** (Información) también se ve que de hecho se trata de la solicitud GET correspondiente al archivo.
+2. Con el paquete de la solicitud GET seleccionado, diríjase a **File > Export Objects > HTTP** (Archivo > Exportar objetos > HTTP) desde el menú de Wireshark.
+
+<p align="center">
+    <img src="img/image6.png" alt="bloques">
+  </p>
+
+
+  Se mostrarán todos los objetos HTTP presentes en el flujo TCP que contiene la solicitud GET. En este caso, el único archivo presente en la captura es **W32.Nimda.Amm.exe**. El archivo aparecerá en pantalla después de algunos segundos.
+
+
+<p align="center">
+    <img src="img/image7.png" alt="bloques">
+  </p>
+
+  **¿Por qué W32.Nimda.Amm.exe es el único archivo presente en la captura?**
+
+  Debido a que la captura se inició justo antes de la descarga y se detuvo justo después, no se detectó ningún otro tráfico mientras la captura estaba activa.
+
+
+  En la ventana **HTTP object list** (Lista de objetos HTTP), seleccione el archivo **W32.Nimda.Amm.exe** y haga clic en **Save As** (Guardar como), en la parte inferior de la pantalla.
+
+ Haga clic en la flecha hacia la izquierda hasta ver el botón **Home** (Inicio). Haga clic en **Home** y luego en la carpeta **analyst** (no en la ficha **analyst**). Guarde el archivo allí.
+
+
+<p align="center">
+    <img src="img/image8.png" alt="bloques">
+  </p>
+
+ Regrese a su ventana del terminal y asegúrese de que el archivo se haya guardado. Cambie de directorio para ingresar a la carpeta `/home/analyst` y genere una lista de los archivos de la carpeta con el comando: *ls -l*
+
+<p align="center">
+    <img src="img/image9.png" alt="bloques">
+  </p>
+
+  El comando file proporciona información sobre el tipo de archivo. Utilice el comando file para averiguar
+un poco más sobre el malware, tal como se indica a continuación:
+
+<p align="center">
+    <img src="img/image10.png" alt="bloques">
+  </p>
+
+ Realmente es un archivo ejecutable de Windows.
+
+**En el proceso del análisis de malware, ¿cuál sería un próximo paso probable para un analista
+especializado en seguridad?**
+
+<div style="border: 1px solid #ccc; padding: 10px; background-color: #24B442; border-radius: 5px;">
+ El objetivo es identificar el tipo de malware y analizar su comportamiento. Por lo tanto, el archivo de malware debe trasladarse a un entorno controlado y ejecutarse para observar su comportamiento. Los entornos de análisis de malware a menudo se basan en máquinas virtuales y están aislados para evitar daños a los sistemas que no están en prueba. Estos entornos suelen contener herramientas que facilitan la supervisión de la ejecución del malware; el uso de recursos, las conexiones de red y los cambios en el sistema operativo son aspectos que se supervisan habitualmente.
+
+También existen algunas herramientas de análisis de malware basadas en Internet. VirusTotal (virustotal.com) es un ejemplo. Los analistas cargan malware en VirusTotal, que a su vez ejecuta el código malicioso. Después de la ejecución y de una serie de otras comprobaciones, VirusTotal devuelve un informe al analista.
+</div>
+
+
